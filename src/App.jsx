@@ -8,6 +8,7 @@ function App() {
         <h2>
           Browse curated <span>Frontend</span>Tools
         </h2>
+        <div className="callout-card">Some text</div>
       </div>
     </>
   );

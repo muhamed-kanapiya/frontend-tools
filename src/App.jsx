@@ -1,9 +1,12 @@
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
+import Filter from "../components/Filter";
 
 function App() {
   const [popular, setPopular] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [activeGenre, setActiveGenre] = useState(0);
 
   useEffect(() => {
     fetchPopular();
@@ -16,6 +19,7 @@ function App() {
     const movies = await data.json();
 
     setPopular(movies.results);
+    setFiltered(movies.results);
   };
   return (
     <>
@@ -25,8 +29,14 @@ function App() {
           Browse curated <span>Frontend</span>Tools
         </h2>
         <div className="callout-card">Some text </div>
+        <Filter
+          popular={popular}
+          setFiltered={setFiltered}
+          activeGenre={activeGenre}
+          setActiveGenre={setActiveGenre}
+        />
         <div className="popular-movies">
-          {popular.map((movie) => {
+          {filtered.map((movie) => {
             return <Movie key={movie.id} movie={movie} />;
           })}
         </div>

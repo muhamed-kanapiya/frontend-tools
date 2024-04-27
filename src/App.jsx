@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import Filter from "../components/Filter";
+import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   const [popular, setPopular] = useState([]);
@@ -35,11 +36,13 @@ function App() {
           activeGenre={activeGenre}
           setActiveGenre={setActiveGenre}
         />
-        <div className="popular-movies">
-          {filtered.map((movie) => {
-            return <Movie key={movie.id} movie={movie} />;
-          })}
-        </div>
+        <motion.div layout className="popular-movies">
+          <AnimatePresence>
+            {filtered.map((movie) => {
+              return <Movie key={movie.id} movie={movie} />;
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </>
   );

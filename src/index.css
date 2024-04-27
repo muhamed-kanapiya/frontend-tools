@@ -78,6 +78,6 @@ html[data-theme="dark"] {
   font-size: 0.8rem;
 }
 
-button:active {
+.active {
   background-color: aqua;
 }
